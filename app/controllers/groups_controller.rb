@@ -35,12 +35,12 @@ class GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-    redirect_to groups_path, flash[:alert] = "删除成功"
+    redirect_to groups_path,  alert: "删除成功"
   end
 
  private
  def find_group_and_check_premission
-   @group = Group.find(params[:id])
+  @group = Group.find(params[:id])
     if current_user != @group.user
       redirect_to root_path, alert: "你没有权限"
 
